@@ -13,7 +13,7 @@ namespace Theater
     public partial class management : Form
     {
         // Список залов
-        List<Hall> halls = new List<Hall>();
+        private List<Hall> halls = new List<Hall>();
 
         public management()
         {
@@ -21,14 +21,13 @@ namespace Theater
 
             // Устанавливаем иконки
             setIcons();
-
             // Инициализируем таблицу
-            InitializeDataGridView();
-
+            initializeDataGridView();
             // Выводим данные на таблицу
             showHallsOnDataGridView();
         }
 
+        // Устанавливка иконок
         private void setIcons()
         {
             Icon = icons.hall;
@@ -39,7 +38,7 @@ namespace Theater
         }
 
         // Инициализация таблицы
-        private void InitializeDataGridView()
+        private void initializeDataGridView()
         {
             dataGridView_halls.ColumnCount = 3;
             dataGridView_halls.Columns[0].Name = "№";
@@ -64,7 +63,15 @@ namespace Theater
         // Добавление зала
         private void addHallToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            // Открываем форму добавления зала
+            addHall newForm = new addHall(halls);
+            newForm.ShowDialog(this);
+
+            // Возвращаем данные
+            if (newForm.IfNotLeft)
+                halls.Add(newForm.NewHall);
+
+            showHallsOnDataGridView();
         }
 
         // Изменения зала

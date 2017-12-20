@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Theater
 {
     /// Класс "Зал"
-    class Hall
+    public class Hall
     {
         public Int32 number;            // Идетификатор зала
         private String name;            // Название зала
@@ -126,7 +126,7 @@ namespace Theater
     }
 
     /// Класс "Сектора зала"
-    class Sector
+    public class Sector
     {
         private String name;        // Название сектора зала
         private Double rate;        // Надбавка за сектор к базовой цене спектакля
@@ -196,7 +196,7 @@ namespace Theater
         }
     }
 
-    class Spectacle
+    public class Spectacle
     {
         private DateTime performanceDate;
         private String name;
@@ -204,7 +204,7 @@ namespace Theater
         private Int32 hallNumber;
     }
 
-    abstract class Ticket
+    public abstract class Ticket
     {
         private Int32 number;
         private Int32 row;
@@ -213,17 +213,17 @@ namespace Theater
         private Boolean reserved;
     }
 
-    class NormalTicket : Ticket
+    public class NormalTicket : Ticket
     {
 
     }
 
-    class SaleTicket : NormalTicket
+    public class SaleTicket : NormalTicket
     {
 
     }
 
-    class VIPTicket : NormalTicket
+    public class VIPTicket : NormalTicket
     {
 
     }
