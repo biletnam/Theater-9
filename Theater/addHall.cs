@@ -60,13 +60,25 @@ namespace Theater
                 number = 1;
                 return;
             }
+
+            bool uniq;
             for (int i = 1; i < Int32.MaxValue; i++)
+            {
+                uniq = true;
                 for (int j = 0; j < halls.Count; j++)
-                    if (i != halls[j].Number)
+                {
+                    if (i == halls[j].Number)
                     {
-                        number = i;
-                        return;
+                        uniq = false;
+                        break;
                     }
+                }
+                if (uniq)
+                {
+                    number = i;
+                    return;
+                }
+            }
         }
 
         // Проверка вводимого названия зала

@@ -25,9 +25,11 @@ namespace Theater
             initializeDataGridView();
             // Выводим данные на таблицу
             showHallsOnDataGridView();
+            // Блокируем изменение залов не выбрав конкретный
+            lockEditAndRemoveHall();
         }
 
-        // Устанавливка иконок
+        // Установка иконок
         private void setIcons()
         {
             Icon = icons.hall;
@@ -44,6 +46,10 @@ namespace Theater
             dataGridView_halls.Columns[0].Name = "№";
             dataGridView_halls.Columns[1].Name = "Название";
             dataGridView_halls.Columns[2].Name = "Число секторов";
+
+            // Отключаем пользовательскую сортировку
+            foreach (DataGridViewColumn column in dataGridView_halls.Columns)
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
         }
 
         // Вывод данных на таблицу
@@ -72,24 +78,53 @@ namespace Theater
                 halls.Add(newForm.NewHall);
 
             showHallsOnDataGridView();
+            lockEditAndRemoveHall();
         }
 
         // Изменения зала
         private void editHallToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            showHallsOnDataGridView();
+            lockEditAndRemoveHall();
         }
 
         // Удаление зала
         private void removeHallToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            halls.RemoveAt(dataGridView_halls.CurrentRow.Index);
+            showHallsOnDataGridView();
+            lockEditAndRemoveHall();
         }
 
         // Показ формы входа, когда форма для работы менеджера закрывается
         private void management_FormClosing(object sender, FormClosingEventArgs e)
         {
             Owner.Show();
+        }
+
+        // Если строка в таблице не выбрана, то отключаем возможность редактирования и удаления из меню
+        private void lockEditAndRemoveHall()
+        {
+            if (dataGridView_halls.CurrentRow != null)
+            {
+                editHallToolStripMenuItem.Enabled = true;
+                removeHallToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                editHallToolStripMenuItem.Enabled = false;
+                removeHallToolStripMenuItem.Enabled = false;
+            }
+        }
+
+        private void dataGridView_halls_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            lockEditAndRemoveHall();
+        }
+
+        private void dataGridView_halls_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            lockEditAndRemoveHall();
         }
     }
 }

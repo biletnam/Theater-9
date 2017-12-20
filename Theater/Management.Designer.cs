@@ -48,11 +48,15 @@
             this.dataGridView_halls.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView_halls.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridView_halls.Location = new System.Drawing.Point(0, 24);
+            this.dataGridView_halls.MultiSelect = false;
             this.dataGridView_halls.Name = "dataGridView_halls";
             this.dataGridView_halls.ReadOnly = true;
             this.dataGridView_halls.RowHeadersVisible = false;
+            this.dataGridView_halls.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_halls.Size = new System.Drawing.Size(344, 177);
             this.dataGridView_halls.TabIndex = 0;
+            this.dataGridView_halls.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_halls_RowEnter);
+            this.dataGridView_halls.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_halls_RowLeave);
             // 
             // menuStrip
             // 
@@ -77,21 +81,21 @@
             // addHallToolStripMenuItem
             // 
             this.addHallToolStripMenuItem.Name = "addHallToolStripMenuItem";
-            this.addHallToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addHallToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.addHallToolStripMenuItem.Text = "Добавить";
             this.addHallToolStripMenuItem.Click += new System.EventHandler(this.addHallToolStripMenuItem_Click);
             // 
             // editHallToolStripMenuItem
             // 
             this.editHallToolStripMenuItem.Name = "editHallToolStripMenuItem";
-            this.editHallToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editHallToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.editHallToolStripMenuItem.Text = "Изменить";
             this.editHallToolStripMenuItem.Click += new System.EventHandler(this.editHallToolStripMenuItem_Click);
             // 
             // removeHallToolStripMenuItem
             // 
             this.removeHallToolStripMenuItem.Name = "removeHallToolStripMenuItem";
-            this.removeHallToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.removeHallToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.removeHallToolStripMenuItem.Text = "Удалить";
             this.removeHallToolStripMenuItem.Click += new System.EventHandler(this.removeHallToolStripMenuItem_Click);
             // 
