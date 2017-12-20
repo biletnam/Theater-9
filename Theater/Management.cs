@@ -12,9 +12,77 @@ namespace Theater
 {
     public partial class management : Form
     {
+        // Список залов
+        List<Hall> halls = new List<Hall>();
+
         public management()
         {
             InitializeComponent();
+
+            // Устанавливаем иконки
+            setIcons();
+
+            // Инициализируем таблицу
+            InitializeDataGridView();
+
+            // Выводим данные на таблицу
+            showHallsOnDataGridView();
+        }
+
+        private void setIcons()
+        {
+            Icon = icons.hall;
+            hallToolStripMenuItem.Image = icons.hall.ToBitmap();
+            addHallToolStripMenuItem.Image = icons.addRecord.ToBitmap();
+            editHallToolStripMenuItem.Image = icons.editRecord.ToBitmap();
+            removeHallToolStripMenuItem.Image = icons.removeRecord.ToBitmap();
+        }
+
+        // Инициализация таблицы
+        private void InitializeDataGridView()
+        {
+            dataGridView_halls.ColumnCount = 3;
+            dataGridView_halls.Columns[0].Name = "№";
+            dataGridView_halls.Columns[1].Name = "Название";
+            dataGridView_halls.Columns[2].Name = "Число секторов";
+        }
+
+        // Вывод данных на таблицу
+        private void showHallsOnDataGridView()
+        {
+            dataGridView_halls.Rows.Clear();
+
+            foreach (Hall hall in halls)
+            {
+                string[] newRow = new string[] { Convert.ToString(hall.Number),
+                                                 Convert.ToString(hall.Name),
+                                                 Convert.ToString(hall.Sectors.Count) };
+                dataGridView_halls.Rows.Add(newRow);
+            }
+        }
+
+        // Добавление зала
+        private void addHallToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        // Изменения зала
+        private void editHallToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // Удаление зала
+        private void removeHallToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // Показ формы входа, когда форма для работы менеджера закрывается
+        private void management_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Owner.Show();
         }
     }
 }

@@ -125,6 +125,27 @@
   <ItemGroup>
     <None Include="images\manager.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\Oxygen-Icons.org-Oxygen-Actions-document-edit.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\Oxygen-Icons.org-Oxygen-Actions-document-new.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\Oxygen-Icons.org-Oxygen-Actions-edit-delete-shred.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\addRecord.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\editRecord.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\removeRecord.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\hall.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

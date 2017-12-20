@@ -31,17 +31,18 @@ namespace Theater
                 pictureBox_avatar.Image = new Bitmap(images.cashier, pictureBox_avatar.Width, pictureBox_avatar.Height);
         }
 
+        // Открытие формы для менеджера или кассира в зависимости от выбора
         private void button_login_Click(object sender, EventArgs e)
         {
             if (comboBox_user.SelectedIndex == 0)
             {
-                new management().Show();
+                new management().Show(this);
                 this.Hide();
             }
             else if (comboBox_user.SelectedIndex == 1)
             {
-                new management().Show();
-                this.Hide();
+                /*new management().Show(this);
+                this.Hide();*/
             }
         }
     }
