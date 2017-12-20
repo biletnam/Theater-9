@@ -1,1 +1,9 @@
 C:\Users\Николай\Desktop\Theater\Theater\bin\Debug\Theater.exe.config
+C:\Users\Николай\Desktop\Theater\Theater\bin\Debug\Theater.exe
+C:\Users\Николай\Desktop\Theater\Theater\bin\Debug\Theater.pdb
+C:\Users\Николай\Desktop\Theater\Theater\obj\Debug\Theater.csprojResolveAssemblyReference.cache
+C:\Users\Николай\Desktop\Theater\Theater\obj\Debug\Theater.loginForm.resources
+C:\Users\Николай\Desktop\Theater\Theater\obj\Debug\Theater.Properties.Resources.resources
+C:\Users\Николай\Desktop\Theater\Theater\obj\Debug\Theater.csproj.GenerateResource.Cache
+C:\Users\Николай\Desktop\Theater\Theater\obj\Debug\Theater.exe
+C:\Users\Николай\Desktop\Theater\Theater\obj\Debug\Theater.pdb
