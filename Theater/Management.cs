@@ -84,6 +84,10 @@ namespace Theater
         // Изменения зала
         private void editHallToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Открываем форму изменения зала
+            editHall newForm = new editHall();
+            newForm.ShowDialog(this);
+
             showHallsOnDataGridView();
             lockEditAndRemoveHall();
         }

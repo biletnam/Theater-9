@@ -98,7 +98,7 @@ namespace Theater
 
             return true;
         }
-        // Получение зала по индексу
+        // Получение сектора по индексу
         // null - получение произошло неуспешно
         public Sector getSector(Int32 index)
         {
@@ -109,7 +109,7 @@ namespace Theater
 
             return sectors[index];
         }
-        // Удаление зала по индексу
+        // Удаление сектора по индексу
         // true - удаление произошло успешно, false - неуспешно
         public bool removeSector(Int32 index)
         {

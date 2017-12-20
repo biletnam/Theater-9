@@ -58,6 +58,12 @@
     <Compile Include="addHall.Designer.cs">
       <DependentUpon>addHall.cs</DependentUpon>
     </Compile>
+    <Compile Include="editHall.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editHall.Designer.cs">
+      <DependentUpon>editHall.cs</DependentUpon>
+    </Compile>
     <Compile Include="icons.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -85,6 +91,9 @@
     <Compile Include="Theater.cs" />
     <EmbeddedResource Include="addHall.resx">
       <DependentUpon>addHall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editHall.resx">
+      <DependentUpon>editHall.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="icons.resx">
       <Generator>ResXFileCodeGenerator</Generator>
