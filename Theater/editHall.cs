@@ -131,9 +131,10 @@ namespace Theater
             lockEditAndRemoveSector();
         }
 
+        // Удаление сектора из зала
         private void removeSectorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            hall.removeSector(dataGridView_sectors.CurrentRow.Index);
             showSectorsOnDataGridView();
             lockEditAndRemoveSector();
         }

@@ -58,6 +58,12 @@
     <Compile Include="addHall.Designer.cs">
       <DependentUpon>addHall.cs</DependentUpon>
     </Compile>
+    <Compile Include="addSector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addSector.Designer.cs">
+      <DependentUpon>addSector.cs</DependentUpon>
+    </Compile>
     <Compile Include="editHall.cs">
       <SubType>Form</SubType>
     </Compile>
