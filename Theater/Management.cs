@@ -88,6 +88,10 @@ namespace Theater
             editHall newForm = new editHall(halls[dataGridView_halls.CurrentRow.Index]);
             newForm.ShowDialog(this);
 
+            // Возвращаем данные
+            if (newForm.IfNotLeft)
+                halls[dataGridView_halls.CurrentRow.Index] = newForm.Hall;
+
             showHallsOnDataGridView();
             lockEditAndRemoveHall();
         }

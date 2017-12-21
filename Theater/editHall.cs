@@ -12,8 +12,26 @@ namespace Theater
 {
     public partial class editHall : Form
     {
+        // Флаг того, покинул ли пользователь форму не введя данные
+        private bool ifNotLeft;
         // Изменяемый зал
         private Hall hall;
+
+        // Свойства для возврата значений из формы
+        public bool IfNotLeft
+        {
+            get
+            {
+                return ifNotLeft;
+            }
+        }
+        public Hall Hall
+        {
+            get
+            {
+                return hall;
+            }
+        }
 
         public editHall(Hall hall)
         {
@@ -30,15 +48,18 @@ namespace Theater
             initializeDataGridView();
             // Выводим данные на таблицу
             showSectorsOnDataGridView();
-            // Блокируем изменение залов не выбрав конкретный
-            //lockEditAndRemoveHall();
+            // Блокируем изменение секторов не выбрав конкретный
+            lockEditAndRemoveSector();
+
+            // По умолчанию пользователь не ввел данные
+            ifNotLeft = false;
         }
 
         // Установка иконок
         private void setIcons()
         {
             Icon = icons.editRecord;
-            sectorToolStripMenuItem.Image = icons.hall.ToBitmap();
+            sectorToolStripMenuItem.Image = icons.sector.ToBitmap();
             addSectorToolStripMenuItem.Image = icons.addRecord.ToBitmap();
             editSectorToolStripMenuItem.Image = icons.editRecord.ToBitmap();
             removeSectorToolStripMenuItem.Image = icons.removeRecord.ToBitmap();
@@ -80,9 +101,84 @@ namespace Theater
             }
         }
 
-        private void button_add_Click(object sender, EventArgs e)
+        // Проверка вводимого названия зала
+        private bool nameValidator(String name)
+        {
+            if (name.Length > 2)
+                return true;
+            else
+                return false;
+        }
+
+        // Фокус на кнопку добавления по нажатию enter в поле ввода названия
+        private void textBox_name_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                button_add.Focus();
+        }
+
+        private void addSectorToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+            showSectorsOnDataGridView();
+            lockEditAndRemoveSector();
+        }
+
+        private void editSectorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            showSectorsOnDataGridView();
+            lockEditAndRemoveSector();
+        }
+
+        private void removeSectorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            showSectorsOnDataGridView();
+            lockEditAndRemoveSector();
+        }
+
+        private void button_add_Click(object sender, EventArgs e)
+        {
+            if (!nameValidator(textBox_name.Text))
+            {
+                MessageBox.Show(this,
+                                "В названии зала допущена ошибка: название должно быть длиной более двух символов",
+                                "Название зала введено некорректно",
+                                MessageBoxButtons.OK);
+                return;
+            }
+
+            // Устанавливаем данные для передачи
+            ifNotLeft = true;
+            hall.Name = textBox_name.Text;
+
+            this.Close();
+        }
+
+        // Если строка в таблице не выбрана, то отключаем возможность редактирования и удаления из меню
+        private void lockEditAndRemoveSector()
+        {
+            if (dataGridView_sectors.CurrentRow != null)
+            {
+                editSectorToolStripMenuItem.Enabled = true;
+                removeSectorToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                editSectorToolStripMenuItem.Enabled = false;
+                removeSectorToolStripMenuItem.Enabled = false;
+            }
+        }
+
+        private void dataGridView_sectors_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            lockEditAndRemoveSector();
+        }
+
+        private void dataGridView_sectors_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            lockEditAndRemoveSector();
         }
     }
 }

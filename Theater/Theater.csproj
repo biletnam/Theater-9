@@ -144,15 +144,6 @@
     <None Include="images\manager.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="icons\Oxygen-Icons.org-Oxygen-Actions-document-edit.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\Oxygen-Icons.org-Oxygen-Actions-document-new.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="icons\Oxygen-Icons.org-Oxygen-Actions-edit-delete-shred.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="icons\addRecord.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +154,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="icons\hall.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\sector.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

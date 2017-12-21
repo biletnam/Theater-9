@@ -55,6 +55,7 @@
             this.textBox_name.Name = "textBox_name";
             this.textBox_name.Size = new System.Drawing.Size(303, 20);
             this.textBox_name.TabIndex = 7;
+            this.textBox_name.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_name_KeyUp);
             // 
             // label_name
             // 
@@ -113,18 +114,21 @@
             this.addSectorToolStripMenuItem.Name = "addSectorToolStripMenuItem";
             this.addSectorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addSectorToolStripMenuItem.Text = "Добавить";
+            this.addSectorToolStripMenuItem.Click += new System.EventHandler(this.addSectorToolStripMenuItem_Click);
             // 
             // editSectorToolStripMenuItem
             // 
             this.editSectorToolStripMenuItem.Name = "editSectorToolStripMenuItem";
             this.editSectorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editSectorToolStripMenuItem.Text = "Изменить";
+            this.editSectorToolStripMenuItem.Click += new System.EventHandler(this.editSectorToolStripMenuItem_Click);
             // 
             // removeSectorToolStripMenuItem
             // 
             this.removeSectorToolStripMenuItem.Name = "removeSectorToolStripMenuItem";
             this.removeSectorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.removeSectorToolStripMenuItem.Text = "Удалить";
+            this.removeSectorToolStripMenuItem.Click += new System.EventHandler(this.removeSectorToolStripMenuItem_Click);
             // 
             // groupBox_hall
             // 
@@ -180,6 +184,8 @@
             this.dataGridView_sectors.RowHeadersVisible = false;
             this.dataGridView_sectors.Size = new System.Drawing.Size(392, 205);
             this.dataGridView_sectors.TabIndex = 12;
+            this.dataGridView_sectors.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_sectors_RowEnter);
+            this.dataGridView_sectors.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_sectors_RowLeave);
             // 
             // editHall
             // 
@@ -191,6 +197,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "editHall";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изменить зал";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
