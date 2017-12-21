@@ -78,7 +78,7 @@ namespace Theater
             dataGridView_sectors.ColumnCount = 4;
             dataGridView_sectors.Columns[0].Name = "Название";
             dataGridView_sectors.Columns[1].Name = "Надбавка";
-            dataGridView_sectors.Columns[2].Name = "Стартовое место";
+            dataGridView_sectors.Columns[2].Name = "Начальное место";
             dataGridView_sectors.Columns[3].Name = "Конечное место";
 
             // Отключаем пользовательскую сортировку
@@ -119,6 +119,13 @@ namespace Theater
 
         private void addSectorToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Открываем форму добавления зала
+            addSector newForm = new addSector(hall.Sectors);
+            newForm.ShowDialog(this);
+
+            // Возвращаем данные
+            if (newForm.IfNotLeft)
+                hall.Sectors = newForm.Sectors;
 
             showSectorsOnDataGridView();
             lockEditAndRemoveSector();

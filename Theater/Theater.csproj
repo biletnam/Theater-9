@@ -98,6 +98,9 @@
     <EmbeddedResource Include="addHall.resx">
       <DependentUpon>addHall.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="addSector.resx">
+      <DependentUpon>addSector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="editHall.resx">
       <DependentUpon>editHall.cs</DependentUpon>
     </EmbeddedResource>
