@@ -33,18 +33,18 @@
             this.textBox_number = new System.Windows.Forms.TextBox();
             this.label_number = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.залToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.изменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addSectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editSectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeSectorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox_hall = new System.Windows.Forms.GroupBox();
-            this.groupBox_sectors = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button_add = new System.Windows.Forms.Button();
+            this.groupBox_sectors = new System.Windows.Forms.GroupBox();
+            this.dataGridView_sectors = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             this.groupBox_hall.SuspendLayout();
             this.groupBox_sectors.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_sectors)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox_name
@@ -91,40 +91,40 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.залToolStripMenuItem});
+            this.sectorToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(404, 24);
             this.menuStrip1.TabIndex = 9;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // залToolStripMenuItem
+            // sectorToolStripMenuItem
             // 
-            this.залToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.добавитьToolStripMenuItem,
-            this.изменитьToolStripMenuItem,
-            this.удалитьToolStripMenuItem});
-            this.залToolStripMenuItem.Name = "залToolStripMenuItem";
-            this.залToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
-            this.залToolStripMenuItem.Text = "Сектор";
+            this.sectorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addSectorToolStripMenuItem,
+            this.editSectorToolStripMenuItem,
+            this.removeSectorToolStripMenuItem});
+            this.sectorToolStripMenuItem.Name = "sectorToolStripMenuItem";
+            this.sectorToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.sectorToolStripMenuItem.Text = "Сектор";
             // 
-            // добавитьToolStripMenuItem
+            // addSectorToolStripMenuItem
             // 
-            this.добавитьToolStripMenuItem.Name = "добавитьToolStripMenuItem";
-            this.добавитьToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.добавитьToolStripMenuItem.Text = "Добавить";
+            this.addSectorToolStripMenuItem.Name = "addSectorToolStripMenuItem";
+            this.addSectorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addSectorToolStripMenuItem.Text = "Добавить";
             // 
-            // изменитьToolStripMenuItem
+            // editSectorToolStripMenuItem
             // 
-            this.изменитьToolStripMenuItem.Name = "изменитьToolStripMenuItem";
-            this.изменитьToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.изменитьToolStripMenuItem.Text = "Изменить";
+            this.editSectorToolStripMenuItem.Name = "editSectorToolStripMenuItem";
+            this.editSectorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editSectorToolStripMenuItem.Text = "Изменить";
             // 
-            // удалитьToolStripMenuItem
+            // removeSectorToolStripMenuItem
             // 
-            this.удалитьToolStripMenuItem.Name = "удалитьToolStripMenuItem";
-            this.удалитьToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.удалитьToolStripMenuItem.Text = "Удалить";
+            this.removeSectorToolStripMenuItem.Name = "removeSectorToolStripMenuItem";
+            this.removeSectorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.removeSectorToolStripMenuItem.Text = "Удалить";
             // 
             // groupBox_hall
             // 
@@ -142,31 +142,6 @@
             this.groupBox_hall.TabStop = false;
             this.groupBox_hall.Text = "Зал";
             // 
-            // groupBox_sectors
-            // 
-            this.groupBox_sectors.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox_sectors.Controls.Add(this.dataGridView1);
-            this.groupBox_sectors.Location = new System.Drawing.Point(3, 137);
-            this.groupBox_sectors.Name = "groupBox_sectors";
-            this.groupBox_sectors.Size = new System.Drawing.Size(398, 224);
-            this.groupBox_sectors.TabIndex = 11;
-            this.groupBox_sectors.TabStop = false;
-            this.groupBox_sectors.Text = "Секторы";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(392, 205);
-            this.dataGridView1.TabIndex = 12;
-            // 
             // button_add
             // 
             this.button_add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -177,6 +152,34 @@
             this.button_add.TabIndex = 8;
             this.button_add.Text = "Добавить";
             this.button_add.UseVisualStyleBackColor = true;
+            this.button_add.Click += new System.EventHandler(this.button_add_Click);
+            // 
+            // groupBox_sectors
+            // 
+            this.groupBox_sectors.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox_sectors.Controls.Add(this.dataGridView_sectors);
+            this.groupBox_sectors.Location = new System.Drawing.Point(3, 137);
+            this.groupBox_sectors.Name = "groupBox_sectors";
+            this.groupBox_sectors.Size = new System.Drawing.Size(398, 224);
+            this.groupBox_sectors.TabIndex = 11;
+            this.groupBox_sectors.TabStop = false;
+            this.groupBox_sectors.Text = "Секторы";
+            // 
+            // dataGridView_sectors
+            // 
+            this.dataGridView_sectors.AllowUserToAddRows = false;
+            this.dataGridView_sectors.AllowUserToDeleteRows = false;
+            this.dataGridView_sectors.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView_sectors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_sectors.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_sectors.Location = new System.Drawing.Point(3, 16);
+            this.dataGridView_sectors.Name = "dataGridView_sectors";
+            this.dataGridView_sectors.ReadOnly = true;
+            this.dataGridView_sectors.RowHeadersVisible = false;
+            this.dataGridView_sectors.Size = new System.Drawing.Size(392, 205);
+            this.dataGridView_sectors.TabIndex = 12;
             // 
             // editHall
             // 
@@ -194,7 +197,7 @@
             this.groupBox_hall.ResumeLayout(false);
             this.groupBox_hall.PerformLayout();
             this.groupBox_sectors.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_sectors)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,13 +210,13 @@
         private System.Windows.Forms.TextBox textBox_number;
         private System.Windows.Forms.Label label_number;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem залToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem изменитьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sectorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addSectorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editSectorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeSectorToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox_hall;
         private System.Windows.Forms.GroupBox groupBox_sectors;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridView_sectors;
         private System.Windows.Forms.Button button_add;
     }
 }
