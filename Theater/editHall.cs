@@ -120,12 +120,12 @@ namespace Theater
         private void addSectorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Открываем форму добавления зала
-            addSector newForm = new addSector(hall.Sectors);
+            addSector newForm = new addSector(hall);
             newForm.ShowDialog(this);
 
             // Возвращаем данные
             if (newForm.IfNotLeft)
-                hall.Sectors = newForm.Sectors;
+                hall = newForm.Hall;
 
             showSectorsOnDataGridView();
             lockEditAndRemoveSector();

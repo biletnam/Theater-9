@@ -31,14 +31,14 @@
             this.button_add = new System.Windows.Forms.Button();
             this.textBox_name = new System.Windows.Forms.TextBox();
             this.label_name = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
+            this.textBox_rate = new System.Windows.Forms.TextBox();
+            this.label_rate = new System.Windows.Forms.Label();
+            this.numericUpDown_startSeat = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_endSeat = new System.Windows.Forms.NumericUpDown();
+            this.label_startSeat = new System.Windows.Forms.Label();
+            this.label_endSeat = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_startSeat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_endSeat)).BeginInit();
             this.SuspendLayout();
             // 
             // button_add
@@ -56,6 +56,7 @@
             this.textBox_name.Name = "textBox_name";
             this.textBox_name.Size = new System.Drawing.Size(154, 20);
             this.textBox_name.TabIndex = 6;
+            this.textBox_name.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_name_KeyUp);
             // 
             // label_name
             // 
@@ -66,65 +67,80 @@
             this.label_name.TabIndex = 5;
             this.label_name.Text = "Название";
             // 
-            // textBox1
+            // textBox_rate
             // 
-            this.textBox1.Location = new System.Drawing.Point(114, 37);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(154, 20);
-            this.textBox1.TabIndex = 9;
+            this.textBox_rate.Location = new System.Drawing.Point(114, 37);
+            this.textBox_rate.Name = "textBox_rate";
+            this.textBox_rate.Size = new System.Drawing.Size(154, 20);
+            this.textBox_rate.TabIndex = 9;
+            this.textBox_rate.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_rate_KeyUp);
             // 
-            // label1
+            // label_rate
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(51, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Надбавка";
+            this.label_rate.AutoSize = true;
+            this.label_rate.Location = new System.Drawing.Point(51, 40);
+            this.label_rate.Name = "label_rate";
+            this.label_rate.Size = new System.Drawing.Size(57, 13);
+            this.label_rate.TabIndex = 8;
+            this.label_rate.Text = "Надбавка";
             // 
-            // numericUpDown1
+            // numericUpDown_startSeat
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(114, 63);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(154, 20);
-            this.numericUpDown1.TabIndex = 10;
+            this.numericUpDown_startSeat.Location = new System.Drawing.Point(114, 63);
+            this.numericUpDown_startSeat.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDown_startSeat.Name = "numericUpDown_startSeat";
+            this.numericUpDown_startSeat.Size = new System.Drawing.Size(154, 20);
+            this.numericUpDown_startSeat.TabIndex = 10;
+            this.numericUpDown_startSeat.ValueChanged += new System.EventHandler(this.numericUpDown_startSeat_ValueChanged);
+            this.numericUpDown_startSeat.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_startSeat_KeyUp);
             // 
-            // numericUpDown2
+            // numericUpDown_endSeat
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(114, 89);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(154, 20);
-            this.numericUpDown2.TabIndex = 11;
+            this.numericUpDown_endSeat.Location = new System.Drawing.Point(114, 89);
+            this.numericUpDown_endSeat.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDown_endSeat.Name = "numericUpDown_endSeat";
+            this.numericUpDown_endSeat.Size = new System.Drawing.Size(154, 20);
+            this.numericUpDown_endSeat.TabIndex = 11;
+            this.numericUpDown_endSeat.ValueChanged += new System.EventHandler(this.numericUpDown_endSeat_ValueChanged);
+            this.numericUpDown_endSeat.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_endSeat_KeyUp);
             // 
-            // label2
+            // label_startSeat
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 65);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "Начальное место";
+            this.label_startSeat.AutoSize = true;
+            this.label_startSeat.Location = new System.Drawing.Point(12, 65);
+            this.label_startSeat.Name = "label_startSeat";
+            this.label_startSeat.Size = new System.Drawing.Size(96, 13);
+            this.label_startSeat.TabIndex = 12;
+            this.label_startSeat.Text = "Начальное место";
             // 
-            // label3
+            // label_endSeat
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 91);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 13);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "Конечное место";
+            this.label_endSeat.AutoSize = true;
+            this.label_endSeat.Location = new System.Drawing.Point(19, 91);
+            this.label_endSeat.Name = "label_endSeat";
+            this.label_endSeat.Size = new System.Drawing.Size(89, 13);
+            this.label_endSeat.TabIndex = 13;
+            this.label_endSeat.Text = "Конечное место";
             // 
             // addSector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 151);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label_endSeat);
+            this.Controls.Add(this.label_startSeat);
+            this.Controls.Add(this.numericUpDown_endSeat);
+            this.Controls.Add(this.numericUpDown_startSeat);
+            this.Controls.Add(this.textBox_rate);
+            this.Controls.Add(this.label_rate);
             this.Controls.Add(this.button_add);
             this.Controls.Add(this.textBox_name);
             this.Controls.Add(this.label_name);
@@ -134,8 +150,8 @@
             this.Name = "addSector";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавить сектор зала";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_startSeat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_endSeat)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,11 +162,11 @@
         private System.Windows.Forms.Button button_add;
         private System.Windows.Forms.TextBox textBox_name;
         private System.Windows.Forms.Label label_name;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox_rate;
+        private System.Windows.Forms.Label label_rate;
+        private System.Windows.Forms.NumericUpDown numericUpDown_startSeat;
+        private System.Windows.Forms.NumericUpDown numericUpDown_endSeat;
+        private System.Windows.Forms.Label label_startSeat;
+        private System.Windows.Forms.Label label_endSeat;
     }
 }
