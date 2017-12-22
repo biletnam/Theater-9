@@ -112,21 +112,21 @@
             // addSectorToolStripMenuItem
             // 
             this.addSectorToolStripMenuItem.Name = "addSectorToolStripMenuItem";
-            this.addSectorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addSectorToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.addSectorToolStripMenuItem.Text = "Добавить";
             this.addSectorToolStripMenuItem.Click += new System.EventHandler(this.addSectorToolStripMenuItem_Click);
             // 
             // editSectorToolStripMenuItem
             // 
             this.editSectorToolStripMenuItem.Name = "editSectorToolStripMenuItem";
-            this.editSectorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.editSectorToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.editSectorToolStripMenuItem.Text = "Изменить";
             this.editSectorToolStripMenuItem.Click += new System.EventHandler(this.editSectorToolStripMenuItem_Click);
             // 
             // removeSectorToolStripMenuItem
             // 
             this.removeSectorToolStripMenuItem.Name = "removeSectorToolStripMenuItem";
-            this.removeSectorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.removeSectorToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.removeSectorToolStripMenuItem.Text = "Удалить";
             this.removeSectorToolStripMenuItem.Click += new System.EventHandler(this.removeSectorToolStripMenuItem_Click);
             // 
@@ -154,7 +154,7 @@
             this.button_add.Name = "button_add";
             this.button_add.Size = new System.Drawing.Size(120, 23);
             this.button_add.TabIndex = 8;
-            this.button_add.Text = "Добавить";
+            this.button_add.Text = "Изменить";
             this.button_add.UseVisualStyleBackColor = true;
             this.button_add.Click += new System.EventHandler(this.button_add_Click);
             // 
