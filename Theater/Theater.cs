@@ -89,7 +89,7 @@ namespace Theater
             for (int i = 0; i < sectors.Count; i++)
             {
                 if ((newSector.StartSeat < sectors[i].StartSeat && newSector.EndSeat < sectors[i].StartSeat) ||
-                    (newSector.StartSeat > sectors[i].StartSeat && newSector.EndSeat > sectors[i].StartSeat))
+                    (newSector.StartSeat > sectors[i].EndSeat && newSector.EndSeat > sectors[i].EndSeat))
                 {
                     continue;
                 }

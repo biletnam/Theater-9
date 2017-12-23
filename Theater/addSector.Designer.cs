@@ -49,6 +49,7 @@
             this.button_add.TabIndex = 7;
             this.button_add.Text = "Добавить";
             this.button_add.UseVisualStyleBackColor = true;
+            this.button_add.Click += new System.EventHandler(this.button_add_Click);
             // 
             // textBox_name
             // 

@@ -119,5 +119,50 @@ namespace Theater
         {
             numericUpDown_startSeat.Maximum = numericUpDown_endSeat.Value;
         }
+
+        // Добавляем сектор в зал
+        private void button_add_Click(object sender, EventArgs e)
+        {
+            // Проверяем название зала
+            if (!nameValidator(textBox_name.Text))
+            {
+                MessageBox.Show(this,
+                                "В названии зала допущена ошибка: название должно быть длиной более двух символов",
+                                "Название зала введено некорректно",
+                                MessageBoxButtons.OK);
+                textBox_name.Focus();
+                return;
+            }
+
+            // Проверяем надбавку
+            if (!rateValidator(textBox_rate.Text))
+            {
+                MessageBox.Show(this,
+                                "Надбавка должна быть введена в формате 0.000, не может быть отрицательной и/или пустой",
+                                "Надбавка введена некорректно",
+                                MessageBoxButtons.OK);
+                textBox_rate.Focus();
+                return;
+            }
+
+            // Пробуем добавить новый сектор
+            if (!Hall.addSector(new Sector(textBox_name.Text,
+                Convert.ToDouble(textBox_rate.Text),
+                Convert.ToInt32(numericUpDown_startSeat.Value),
+                Convert.ToInt32(numericUpDown_endSeat.Value))))
+            {
+                MessageBox.Show(this,
+                "Начальное место не может быть больше конечного и диапазон мест нового сектора не может пересекаться ни с одним диапазоном мест другого сектора зала",
+                "Диапазон мест сектора введен некорректно",
+                MessageBoxButtons.OK);
+                numericUpDown_startSeat.Focus();
+                return;
+            }
+
+            // Устанавливаем флаг, что данные введены корректно
+            ifNotLeft = true;
+
+            this.Close();
+        }
     }
 }
