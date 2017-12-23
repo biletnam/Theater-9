@@ -85,7 +85,7 @@ namespace Theater
         private void editHallToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Открываем форму изменения зала
-            editHall newForm = new editHall(halls[dataGridView_halls.CurrentRow.Index]);
+            editHall newForm = new editHall((Hall) halls[dataGridView_halls.CurrentRow.Index].Clone());
             newForm.ShowDialog(this);
 
             // Возвращаем данные

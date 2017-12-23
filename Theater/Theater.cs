@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace Theater
 {
+    /// Интерфейс для глубокого копирования
+    public interface ICloneable
+    {
+        object Clone();
+    }
+
     /// Класс "Зал"
-    public class Hall
+    public class Hall : ICloneable
     {
         public Int32 number;            // Идетификатор зала
         private String name;            // Название зала
@@ -171,6 +177,13 @@ namespace Theater
             sectors.RemoveAt(index);
 
             return true;
+        }
+
+        /// Глубокое копирование
+        public object Clone()
+        {
+            List<Sector> sectors = new List<Sector>(this.Sectors);
+            return new Hall { Number = this.Number, Name = this.Name, Sectors = sectors};
         }
     }
 
