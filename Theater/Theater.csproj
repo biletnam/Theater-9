@@ -70,6 +70,12 @@
     <Compile Include="editHall.Designer.cs">
       <DependentUpon>editHall.cs</DependentUpon>
     </Compile>
+    <Compile Include="editSector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editSector.Designer.cs">
+      <DependentUpon>editSector.cs</DependentUpon>
+    </Compile>
     <Compile Include="icons.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -103,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="editHall.resx">
       <DependentUpon>editHall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editSector.resx">
+      <DependentUpon>editSector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="icons.resx">
       <Generator>ResXFileCodeGenerator</Generator>

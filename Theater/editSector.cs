@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace Theater
 {
-    public partial class addSector : Form
+    public partial class editSector : Form
     {
         // Флаг того, покинул ли пользователь форму не введя данные
         private bool ifNotLeft;
-        // Зал в который добавляем сектор
+        // Номер изменяемого сектора зала
+        Int32 sectorIndex;
+        // Зал в котором изменяем сектор
         private Hall hall;
 
         // Свойства для возврата значений из формы
@@ -33,16 +35,28 @@ namespace Theater
             }
         }
 
-        public addSector(Hall hall)
+        public editSector(Hall hall, Int32 sectorIndex)
         {
             InitializeComponent();
 
             // Устанавливаем иконку формы
-            Icon = icons.addRecord;
+            Icon = icons.editRecord;
 
             // По умолчанию пользователь не ввел данные
             ifNotLeft = false;
+            this.sectorIndex = sectorIndex;
             this.hall = hall;
+
+            // Заполняем форму
+            fillForm();
+        }
+
+        private void fillForm()
+        {
+            textBox_name.Text = hall.getSector(sectorIndex).Name;
+            textBox_rate.Text = Convert.ToString(hall.getSector(sectorIndex).Rate);
+            numericUpDown_startSeat.Value = hall.getSector(sectorIndex).StartSeat;
+            numericUpDown_endSeat.Value = hall.getSector(sectorIndex).EndSeat;
         }
 
         // Проверка вводимого названия зала
@@ -106,7 +120,7 @@ namespace Theater
         private void numericUpDown_endSeat_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                button_add.Focus();
+                button_edit.Focus();
         }
 
         // Делаем ограничение прямо на форме на вводимые номера мест
@@ -121,7 +135,7 @@ namespace Theater
         }
 
         // Добавляем сектор в зал
-        private void button_add_Click(object sender, EventArgs e)
+        private void button_edit_Click(object sender, EventArgs e)
         {
             // Проверяем название зала
             if (!nameValidator(textBox_name.Text))
@@ -146,10 +160,11 @@ namespace Theater
             }
 
             // Пробуем добавить новый сектор
-            if (!Hall.addSector(new Sector(textBox_name.Text,
+            if (!Hall.setSector(new Sector(textBox_name.Text,
                 Convert.ToDouble(textBox_rate.Text),
                 Convert.ToInt32(numericUpDown_startSeat.Value),
-                Convert.ToInt32(numericUpDown_endSeat.Value))))
+                Convert.ToInt32(numericUpDown_endSeat.Value)),
+                sectorIndex))
             {
                 MessageBox.Show(this,
                 "Начальное место не может быть больше конечного и диапазон мест нового сектора не может пересекаться ни с одним диапазоном мест другого сектора зала",

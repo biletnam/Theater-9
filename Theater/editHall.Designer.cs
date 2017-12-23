@@ -182,6 +182,7 @@
             this.dataGridView_sectors.Name = "dataGridView_sectors";
             this.dataGridView_sectors.ReadOnly = true;
             this.dataGridView_sectors.RowHeadersVisible = false;
+            this.dataGridView_sectors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_sectors.Size = new System.Drawing.Size(392, 205);
             this.dataGridView_sectors.TabIndex = 12;
             this.dataGridView_sectors.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_sectors_RowEnter);

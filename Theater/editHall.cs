@@ -133,6 +133,13 @@ namespace Theater
 
         private void editSectorToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Открываем форму добавления зала
+            editSector newForm = new editSector(hall, dataGridView_sectors.CurrentRow.Index);
+            newForm.ShowDialog(this);
+
+            // Возвращаем данные
+            if (newForm.IfNotLeft)
+                hall = newForm.Hall;
 
             showSectorsOnDataGridView();
             lockEditAndRemoveSector();

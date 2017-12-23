@@ -115,6 +115,49 @@ namespace Theater
 
             return sectors[index];
         }
+        // Устанвка сектора заместо указанного по индексу sectorIndex
+        // true - добавление произошло успешно, false - неуспешно
+        public bool setSector(Sector newSector, Int32 sectorIndex)
+        {
+            // Проверяем, чтобы места нового сектора не пересекались
+            // с местами секторов уже добавленных в зал
+
+            // Номера секторов не должны быть отрицательными
+            if (newSector.StartSeat < 0 || newSector.EndSeat < 0)
+            {
+                return false;
+            }
+
+            // Если секоров ещё нет, то сразу выходим, т. к. заменять нечего
+            if (sectors.Count == 0)
+            {
+                return false;
+            }
+
+            // Далее проверяем на пересечения
+            for (int i = 0; i < sectors.Count; i++)
+            {
+                // Но не учитываем индекс заменяемого сектора зала
+                if (i == sectorIndex)
+                    continue;
+
+                // Проверяем
+                if ((newSector.StartSeat < sectors[i].StartSeat && newSector.EndSeat < sectors[i].StartSeat) ||
+                    (newSector.StartSeat > sectors[i].EndSeat && newSector.EndSeat > sectors[i].EndSeat))
+                {
+                    continue;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            // После проверок изменяем сектор
+            sectors[sectorIndex] = newSector;
+
+            return true;
+        }
         // Удаление сектора по индексу
         // true - удаление произошло успешно, false - неуспешно
         public bool removeSector(Int32 index)
