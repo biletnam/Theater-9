@@ -263,35 +263,241 @@ namespace Theater
         }
     }
 
+    /// Класс "Спектакль"
     public class Spectacle
     {
-        private DateTime performanceDate;
-        private String name;
-        private Double basePrice;
-        private Int32 hallNumber;
+        private DateTime performanceDate;   // Дата выступления
+        private String name;                // Название спектакля
+        private Double basePrice;           // Базовая стоимость билета на спектакль
+        private Int32 hallNumber;           // Номер зала в котором будет проходить выступление
+        private List<Ticket> tickets;       // Билеты на спектакль
+        
+        /// Конструкторы
+        public Spectacle()
+        {
+            performanceDate = DateTime.Now;
+            name = "";
+            basePrice = 0.0;
+            hallNumber = -1;
+            tickets = new List<Ticket>();
+        }
+        public Spectacle(DateTime performanceDate, String name, Double basePrice, Int32 hallNumber, List<Ticket> tickets)
+        {
+            this.performanceDate = DateTime.Now;
+            this.name = "";
+            this.basePrice = 0.0;
+            this.hallNumber = -1;
+            this.tickets = new List<Ticket>();
+        }
+
+        /// Свойства для получения/установки значения поля
+        public DateTime PerformanceDate
+        {
+            get
+            {
+                return performanceDate;
+            }
+            set
+            {
+                performanceDate = value;
+            }
+        }
+        public String Name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = (value.Length > 0) ? value : "Не задано";
+            }
+        }
+        public Double BasePrice
+        {
+            get
+            {
+                return basePrice;
+            }
+            set
+            {
+                basePrice = (value < 0) ? 0 : value;
+            }
+        }
+        public Int32 HallNumber
+        {
+            get
+            {
+                return hallNumber;
+            }
+            set
+            {
+                hallNumber = (value < 0) ? -1 : value;
+            }
+        }
+        public List<Ticket> Tickets
+        {
+            get
+            {
+                return tickets;
+            }
+            set
+            {
+                tickets = value;
+            }
+        }
     }
 
+    /// Абстрактный класс "Билет"
     public abstract class Ticket
     {
-        private Int32 number;
-        private Int32 row;
-        private Int32 seat;
-        private Double calculatedPrice;
-        private Boolean reserved;
-    }
+        protected Int32 number;           // Уникальный номер билета
+        protected Int32 seat;             // Место
+        protected Double calculatedPrice; // Стоимость билета
+        protected Boolean reserved;       // Билет только забронирован или уже куплен
 
+        /// Конструкторы
+        public Ticket()
+        {
+            number = 0;
+            seat = -1;
+            calculatedPrice = 0.0;
+            reserved = false;
+        }
+        public Ticket(Int32 number, Int32 seat, Double calculatedPrice, Boolean reserved)
+        {
+            this.number = number;
+            this.seat = seat;
+            this.calculatedPrice = calculatedPrice;
+            this.reserved = reserved;
+        }
+
+        /// Свойства для получения/установки значения поля
+        public Int32 Number
+        {
+            get
+            {
+                return number;
+            }
+            set
+            {
+                if (value < 0 || value > Int32.MaxValue)
+                    throw new ArgumentOutOfRangeException($"Значение идентификатора зала должно быть между 0 и {Int32.MaxValue}");
+                number = value;
+            }
+        }
+        public Int32 Seat
+        {
+            get
+            {
+                return seat;
+            }
+            set
+            {
+                seat = (value < 0) ? 0 : value;
+            }
+        }
+        public double CalculatedPrice
+        {
+            get
+            {
+                return calculatedPrice;
+            }
+            set
+            {
+                calculatedPrice = (value < 0) ? -1 : value;
+            }
+        }
+        public bool Reserved
+        {
+            get
+            {
+                return reserved;
+            }
+            set
+            {
+                reserved = value;
+            }
+        }
+
+        // Сменить статус резервирования билета на противоположный
+        protected void changeStatus()
+        {
+            reserved = !reserved;
+        }
+
+        // Подсчет стоимости билета в зависимости от типа
+        protected abstract void calculatePrice(Double basePrice, Double rate);
+    }
+    
+    /// Класс "Обычный билет"
     public class NormalTicket : Ticket
     {
-
+        protected override void calculatePrice(Double basePrice, Double rate)
+        {
+            calculatedPrice = basePrice * rate;
+        }
     }
-
+    
+    /// Класс "Билет со скидкой"
     public class SaleTicket : NormalTicket
     {
+        private Double sale;                // Размер скидки
 
+        /// Свойства для получения/установки значения поля
+        public Double Sale
+        {
+            get
+            {
+                return sale;
+            }
+            set
+            {
+                sale = value;
+            }
+        }
+
+        // Подсчет стоимости билета в зависимости от типа
+        protected override void calculatePrice(Double basePrice, Double rate)
+        {
+            calculatedPrice = basePrice * rate * sale;
+        }
     }
 
+    /// Класс "VIP билет"
     public class VIPTicket : NormalTicket
     {
+        private Double additionalCost;      // Дополнительная стоимоть доп. услуги по VIP билету
+        private String additionalService;   // Содержание доп. услуги по VIP билету
+        
+        /// Свойства для получения/установки значения поля
+        public Double AdditionalCost
+        {
+            get
+            {
+                return additionalCost;
+            }
+            set
+            {
+                additionalCost = value;
+            }
+        }
+        public String AdditionalService
+        {
+            get
+            {
+                return additionalService;
+            }
+            set
+            {
+                additionalService = value;
+            }
+        }
 
+        // Подсчет стоимости билета в зависимости от типа
+        protected override void calculatePrice(Double basePrice, Double rate)
+        {
+            calculatedPrice = basePrice * rate + additionalCost;
+        }
     }
 }
