@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,6 +26,8 @@ namespace Theater
             setIcons();
             // Инициализируем таблицу
             initializeDataGridView();
+            // Загружаем данные из файла
+            DeserializeHalls();
             // Выводим данные на таблицу
             showHallsOnDataGridView();
             // Блокируем изменение залов не выбрав конкретный
@@ -63,6 +68,31 @@ namespace Theater
                                                  Convert.ToString(hall.Name),
                                                  Convert.ToString(hall.Sectors.Count) };
                 dataGridView_halls.Rows.Add(newRow);
+            }
+        }
+
+        // Сериализация данныx в файл
+        private void SerializeHalls()
+        {
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream("halls.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, halls);
+            stream.Close();
+        }
+
+        // Десериализация данных из файла
+        private void DeserializeHalls()
+        {
+            IFormatter formatter = new BinaryFormatter();
+            try
+            {
+                Stream stream = new FileStream("halls.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+                halls = (List<Hall>)formatter.Deserialize(stream);
+                stream.Close();
+            }
+            catch (FileNotFoundException)
+            {
+                return;
             }
         }
 
@@ -107,6 +137,7 @@ namespace Theater
         // Показ формы входа, когда форма для работы менеджера закрывается
         private void management_FormClosing(object sender, FormClosingEventArgs e)
         {
+            SerializeHalls();
             Owner.Show();
         }
 

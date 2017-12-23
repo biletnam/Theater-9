@@ -13,6 +13,7 @@ namespace Theater
     }
 
     /// Класс "Зал"
+    [Serializable]
     public class Hall : ICloneable
     {
         public Int32 number;            // Идетификатор зала
@@ -183,11 +184,15 @@ namespace Theater
         public object Clone()
         {
             List<Sector> sectors = new List<Sector>(this.Sectors);
-            return new Hall { Number = this.Number, Name = this.Name, Sectors = sectors};
+            return new Hall {
+                Number = this.Number,
+                Name = this.Name,
+                Sectors = sectors};
         }
     }
 
     /// Класс "Сектора зала"
+    [Serializable]
     public class Sector
     {
         private String name;        // Название сектора зала
