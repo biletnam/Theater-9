@@ -64,6 +64,12 @@
     <Compile Include="addSector.Designer.cs">
       <DependentUpon>addSector.cs</DependentUpon>
     </Compile>
+    <Compile Include="addSpectacle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addSpectacle.Designer.cs">
+      <DependentUpon>addSpectacle.cs</DependentUpon>
+    </Compile>
     <Compile Include="editHall.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="addSector.resx">
       <DependentUpon>addSector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addSpectacle.resx">
+      <DependentUpon>addSpectacle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="editHall.resx">
       <DependentUpon>editHall.cs</DependentUpon>

@@ -150,7 +150,16 @@ namespace Theater
 
         private void addSpecToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Открываем форму добавления зала
+            addSpectacle newForm = new addSpectacle(halls, spectacles);
+            newForm.ShowDialog(this);
 
+            // Возвращаем данные
+            if (newForm.IfNotLeft)
+                spectacles.Add(newForm.NewSpectacle);
+
+            showHallsOnDataGridView();
+            lockEditAndRemoveHall();
         }
 
         private void editSpecToolStripMenuItem_Click(object sender, EventArgs e)
