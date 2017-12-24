@@ -81,21 +81,21 @@
             // addHallToolStripMenuItem
             // 
             this.addHallToolStripMenuItem.Name = "addHallToolStripMenuItem";
-            this.addHallToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.addHallToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addHallToolStripMenuItem.Text = "Добавить";
             this.addHallToolStripMenuItem.Click += new System.EventHandler(this.addHallToolStripMenuItem_Click);
             // 
             // editHallToolStripMenuItem
             // 
             this.editHallToolStripMenuItem.Name = "editHallToolStripMenuItem";
-            this.editHallToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.editHallToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.editHallToolStripMenuItem.Text = "Изменить";
             this.editHallToolStripMenuItem.Click += new System.EventHandler(this.editHallToolStripMenuItem_Click);
             // 
             // removeHallToolStripMenuItem
             // 
             this.removeHallToolStripMenuItem.Name = "removeHallToolStripMenuItem";
-            this.removeHallToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.removeHallToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.removeHallToolStripMenuItem.Text = "Удалить";
             this.removeHallToolStripMenuItem.Click += new System.EventHandler(this.removeHallToolStripMenuItem_Click);
             // 

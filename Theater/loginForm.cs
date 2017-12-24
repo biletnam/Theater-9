@@ -41,8 +41,8 @@ namespace Theater
             }
             else if (comboBox_user.SelectedIndex == 1)
             {
-                /*new management().Show(this);
-                this.Hide();*/
+                new selling().Show(this);
+                this.Hide();
             }
         }
     }

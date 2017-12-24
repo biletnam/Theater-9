@@ -180,6 +180,15 @@ namespace Theater
             return true;
         }
 
+        // Получить количество всех мест в зале
+        public Int32 getTotalSeats()
+        {
+            Int32 counter = 0;
+            for (int i = 0; i < sectors.Count; i++)
+                counter += sectors[i].EndSeat - sectors[i].StartSeat + 1;
+            return counter;
+        }
+
         /// Глубокое копирование
         public object Clone()
         {
@@ -346,6 +355,8 @@ namespace Theater
                 tickets = value;
             }
         }
+
+        
     }
 
     /// Абстрактный класс "Билет"

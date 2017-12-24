@@ -142,6 +142,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="selling.resx">
+      <DependentUpon>selling.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -181,6 +184,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="icons\sector.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\selling.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\spectacle.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="icons\tickets.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

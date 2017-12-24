@@ -123,9 +123,39 @@ namespace Theater {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
+        internal static System.Drawing.Icon selling {
+            get {
+                object obj = ResourceManager.GetObject("selling", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon spectacle {
+            get {
+                object obj = ResourceManager.GetObject("spectacle", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
         internal static System.Drawing.Icon theater {
             get {
                 object obj = ResourceManager.GetObject("theater", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon tickets {
+            get {
+                object obj = ResourceManager.GetObject("tickets", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

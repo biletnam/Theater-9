@@ -16,11 +16,14 @@ namespace Theater
     public partial class management : Form
     {
         // Список залов
-        private List<Hall> halls = new List<Hall>();
+        private List<Hall> halls;
 
         public management()
         {
             InitializeComponent();
+
+            // Инициализируем поля
+            halls = new List<Hall>();
 
             // Устанавливаем иконки
             setIcons();
