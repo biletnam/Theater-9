@@ -6,12 +6,6 @@ using System.Threading.Tasks;
 
 namespace Theater
 {
-    /// Интерфейс для глубокого копирования
-    public interface ICloneable
-    {
-        object Clone();
-    }
-
     /// Класс "Зал"
     [Serializable]
     public class Hall : ICloneable
@@ -122,7 +116,7 @@ namespace Theater
 
             return sectors[index];
         }
-        // Устанвка сектора заместо указанного по индексу sectorIndex
+        // Установка сектора заместо указанного по индексу sectorIndex
         // true - добавление произошло успешно, false - неуспешно
         public bool setSector(Sector newSector, Int32 sectorIndex)
         {
@@ -193,10 +187,12 @@ namespace Theater
         public object Clone()
         {
             List<Sector> sectors = new List<Sector>(this.Sectors);
-            return new Hall {
+            return new Hall
+            {
                 Number = this.Number,
                 Name = this.Name,
-                Sectors = sectors};
+                Sectors = sectors
+            };
         }
     }
 
@@ -273,7 +269,8 @@ namespace Theater
     }
 
     /// Класс "Спектакль"
-    public class Spectacle
+    [Serializable]
+    public class Spectacle : ICloneable
     {
         private DateTime performanceDate;   // Дата выступления
         private String name;                // Название спектакля
@@ -290,12 +287,12 @@ namespace Theater
             hallNumber = -1;
             tickets = new List<Ticket>();
         }
-        public Spectacle(DateTime performanceDate, String name, Double basePrice, Int32 hallNumber, List<Ticket> tickets)
+        public Spectacle(DateTime performanceDate, String name, Double basePrice, Int32 hallNumber)
         {
-            this.performanceDate = DateTime.Now;
-            this.name = "";
-            this.basePrice = 0.0;
-            this.hallNumber = -1;
+            this.performanceDate = performanceDate;
+            this.name = name;
+            this.basePrice = basePrice;
+            this.hallNumber = hallNumber;
             this.tickets = new List<Ticket>();
         }
 
@@ -356,10 +353,23 @@ namespace Theater
             }
         }
 
-        
+        /// Глубокое копирование
+        public object Clone()
+        {
+            List<Ticket> tickets = new List<Ticket>(this.Tickets);
+            return new Spectacle
+            {
+                PerformanceDate = this.PerformanceDate,
+                Name = this.Name,
+                BasePrice = this.BasePrice,
+                HallNumber = this.HallNumber,
+                Tickets = tickets
+            };
+        }
     }
 
     /// Абстрактный класс "Билет"
+    [Serializable]
     public abstract class Ticket
     {
         protected Int32 number;           // Уникальный номер билета
@@ -440,8 +450,9 @@ namespace Theater
         // Подсчет стоимости билета в зависимости от типа
         protected abstract void calculatePrice(Double basePrice, Double rate);
     }
-    
+
     /// Класс "Обычный билет"
+    [Serializable]
     public class NormalTicket : Ticket
     {
         protected override void calculatePrice(Double basePrice, Double rate)
@@ -449,8 +460,9 @@ namespace Theater
             calculatedPrice = basePrice * rate;
         }
     }
-    
+
     /// Класс "Билет со скидкой"
+    [Serializable]
     public class SaleTicket : NormalTicket
     {
         private Double sale;                // Размер скидки
@@ -476,6 +488,7 @@ namespace Theater
     }
 
     /// Класс "VIP билет"
+    [Serializable]
     public class VIPTicket : NormalTicket
     {
         private Double additionalCost;      // Дополнительная стоимоть доп. услуги по VIP билету

@@ -82,6 +82,12 @@
     <Compile Include="editSector.Designer.cs">
       <DependentUpon>editSector.cs</DependentUpon>
     </Compile>
+    <Compile Include="editSpectacle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editSpectacle.Designer.cs">
+      <DependentUpon>editSpectacle.cs</DependentUpon>
+    </Compile>
     <Compile Include="icons.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -127,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="editSector.resx">
       <DependentUpon>editSector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editSpectacle.resx">
+      <DependentUpon>editSpectacle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="icons.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -45,6 +45,7 @@
             this.dateTimePicker_perfomanceDate.Name = "dateTimePicker_perfomanceDate";
             this.dateTimePicker_perfomanceDate.Size = new System.Drawing.Size(257, 20);
             this.dateTimePicker_perfomanceDate.TabIndex = 0;
+            this.dateTimePicker_perfomanceDate.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker_perfomanceDate_KeyUp);
             // 
             // textBox_name
             // 
@@ -52,6 +53,7 @@
             this.textBox_name.Name = "textBox_name";
             this.textBox_name.Size = new System.Drawing.Size(257, 20);
             this.textBox_name.TabIndex = 1;
+            this.textBox_name.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_name_KeyUp);
             // 
             // textBox_baseTicketPrice
             // 
@@ -59,6 +61,7 @@
             this.textBox_baseTicketPrice.Name = "textBox_baseTicketPrice";
             this.textBox_baseTicketPrice.Size = new System.Drawing.Size(257, 20);
             this.textBox_baseTicketPrice.TabIndex = 2;
+            this.textBox_baseTicketPrice.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_baseTicketPrice_KeyUp);
             // 
             // comboBox_hall
             // 
@@ -70,6 +73,7 @@
             this.comboBox_hall.Name = "comboBox_hall";
             this.comboBox_hall.Size = new System.Drawing.Size(257, 21);
             this.comboBox_hall.TabIndex = 3;
+            this.comboBox_hall.KeyUp += new System.Windows.Forms.KeyEventHandler(this.comboBox_hall_KeyUp);
             // 
             // label_perfomanceDate
             // 
@@ -120,6 +124,7 @@
             this.button_add.TabIndex = 8;
             this.button_add.Text = "Добавить";
             this.button_add.UseVisualStyleBackColor = true;
+            this.button_add.Click += new System.EventHandler(this.button_add_Click);
             // 
             // addSpectacle
             // 

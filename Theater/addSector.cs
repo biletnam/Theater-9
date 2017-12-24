@@ -45,7 +45,7 @@ namespace Theater
             this.hall = hall;
         }
 
-        // Проверка вводимого названия зала
+        // Проверка вводимого названия сектора
         private bool nameValidator(String name)
         {
             if (name.Length > 2)
