@@ -119,7 +119,7 @@ namespace Theater
 
         private void addSectorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Открываем форму добавления зала
+            // Открываем форму добавления сектора зала
             addSector newForm = new addSector(hall);
             newForm.ShowDialog(this);
 
@@ -133,7 +133,7 @@ namespace Theater
 
         private void editSectorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Открываем форму добавления зала
+            // Открываем форму изменения сектора зала
             editSector newForm = new editSector(hall, dataGridView_sectors.CurrentRow.Index);
             newForm.ShowDialog(this);
 

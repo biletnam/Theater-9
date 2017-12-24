@@ -195,7 +195,7 @@ namespace Theater
         private void editSpecToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Открываем форму изменения зала
-            editSpectacle newForm = new editSpectacle((Spectacle) spectacles[dataGridView_spectacles.CurrentRow.Index].Clone());
+            editSpectacle newForm = new editSpectacle(halls, (Spectacle) spectacles[dataGridView_spectacles.CurrentRow.Index].Clone());
             newForm.ShowDialog(this);
 
             // Возвращаем данные

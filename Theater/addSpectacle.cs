@@ -110,7 +110,7 @@ namespace Theater
             return true;
         }
 
-        // Фокус на слеующий элемент формы по нажатию enter'а на текущем
+        // Фокус на следующий элемент формы по нажатию enter'а на текущем
         private void dateTimePicker_perfomanceDate_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

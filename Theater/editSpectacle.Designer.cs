@@ -33,8 +33,8 @@
             this.groupBox_spectacle = new System.Windows.Forms.GroupBox();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.ticketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeTicketToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button_edit = new System.Windows.Forms.Button();
             this.label_hall = new System.Windows.Forms.Label();
             this.label_name = new System.Windows.Forms.Label();
@@ -77,6 +77,8 @@
             this.dataGridView_tickets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_tickets.Size = new System.Drawing.Size(392, 151);
             this.dataGridView_tickets.TabIndex = 12;
+            this.dataGridView_tickets.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_tickets_RowEnter);
+            this.dataGridView_tickets.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_tickets_RowLeave);
             // 
             // groupBox_spectacle
             // 
@@ -112,23 +114,23 @@
             // ticketToolStripMenuItem
             // 
             this.ticketToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addToolStripMenuItem,
-            this.removeToolStripMenuItem});
+            this.addTicketToolStripMenuItem,
+            this.removeTicketToolStripMenuItem});
             this.ticketToolStripMenuItem.Name = "ticketToolStripMenuItem";
             this.ticketToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.ticketToolStripMenuItem.Text = "Билет";
             // 
-            // addToolStripMenuItem
+            // addTicketToolStripMenuItem
             // 
-            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.addToolStripMenuItem.Text = "Добавить";
+            this.addTicketToolStripMenuItem.Name = "addTicketToolStripMenuItem";
+            this.addTicketToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addTicketToolStripMenuItem.Text = "Добавить";
             // 
-            // removeToolStripMenuItem
+            // removeTicketToolStripMenuItem
             // 
-            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.removeToolStripMenuItem.Text = "Удалить";
+            this.removeTicketToolStripMenuItem.Name = "removeTicketToolStripMenuItem";
+            this.removeTicketToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.removeTicketToolStripMenuItem.Text = "Удалить";
             // 
             // button_edit
             // 
@@ -140,6 +142,7 @@
             this.button_edit.TabIndex = 17;
             this.button_edit.Text = "Изменить";
             this.button_edit.UseVisualStyleBackColor = true;
+            this.button_edit.Click += new System.EventHandler(this.button_edit_Click);
             // 
             // label_hall
             // 
@@ -199,6 +202,7 @@
             this.comboBox_hall.Name = "comboBox_hall";
             this.comboBox_hall.Size = new System.Drawing.Size(380, 21);
             this.comboBox_hall.TabIndex = 12;
+            this.comboBox_hall.KeyUp += new System.Windows.Forms.KeyEventHandler(this.comboBox_hall_KeyUp);
             // 
             // textBox_baseTicketPrice
             // 
@@ -208,6 +212,7 @@
             this.textBox_baseTicketPrice.Name = "textBox_baseTicketPrice";
             this.textBox_baseTicketPrice.Size = new System.Drawing.Size(380, 20);
             this.textBox_baseTicketPrice.TabIndex = 11;
+            this.textBox_baseTicketPrice.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_baseTicketPrice_KeyUp);
             // 
             // textBox_name
             // 
@@ -217,6 +222,7 @@
             this.textBox_name.Name = "textBox_name";
             this.textBox_name.Size = new System.Drawing.Size(380, 20);
             this.textBox_name.TabIndex = 10;
+            this.textBox_name.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox_name_KeyUp);
             // 
             // dateTimePicker_perfomanceDate
             // 
@@ -226,6 +232,7 @@
             this.dateTimePicker_perfomanceDate.Name = "dateTimePicker_perfomanceDate";
             this.dateTimePicker_perfomanceDate.Size = new System.Drawing.Size(380, 20);
             this.dateTimePicker_perfomanceDate.TabIndex = 9;
+            this.dateTimePicker_perfomanceDate.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dateTimePicker_perfomanceDate_KeyUp);
             // 
             // editSpectacle
             // 
@@ -256,8 +263,8 @@
         private System.Windows.Forms.GroupBox groupBox_spectacle;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem ticketToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addTicketToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeTicketToolStripMenuItem;
         private System.Windows.Forms.Button button_edit;
         private System.Windows.Forms.Label label_hall;
         private System.Windows.Forms.Label label_name;
