@@ -33,7 +33,7 @@ namespace Theater
             // Инициализируем таблицу
             initializeDataGridView();
             // Загружаем данные из файла
-            DeserializeHalls();
+            DeserializeAll();
             // Выводим данные на таблицу
             showHallsOnDataGridView();
             // Блокируем изменение залов не выбрав конкретный
@@ -124,22 +124,44 @@ namespace Theater
         }
 
         // Сериализация данныx в файл
-        private void SerializeHalls()
+        private void SerializeAll()
         {
             IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream("halls.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            Stream stream;
+
+            // Сериализуем список залов
+            stream = new FileStream("halls.bin", FileMode.Create, FileAccess.Write, FileShare.None);
             formatter.Serialize(stream, halls);
+            stream.Close();
+
+            // Сериализуем список спектаклей
+            stream = new FileStream("spectecles.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, spectacles);
             stream.Close();
         }
 
         // Десериализация данных из файла
-        private void DeserializeHalls()
+        private void DeserializeAll()
         {
             IFormatter formatter = new BinaryFormatter();
+
+            // Десериализуем список залов
             try
             {
                 Stream stream = new FileStream("halls.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
                 halls = (List<Hall>) formatter.Deserialize(stream);
+                stream.Close();
+            }
+            catch (FileNotFoundException)
+            {
+                return;
+            }
+
+            // Десериализуем список спектаклей
+            try
+            {
+                Stream stream = new FileStream("spectecles.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+                spectacles = (List<Spectacle>) formatter.Deserialize(stream);
                 stream.Close();
             }
             catch (FileNotFoundException)
@@ -175,6 +197,7 @@ namespace Theater
 
         private void selling_FormClosing(object sender, FormClosingEventArgs e)
         {
+            SerializeAll();
             Owner.Show();
         }
 

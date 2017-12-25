@@ -89,6 +89,15 @@ namespace Theater
                     break;
                 }
 
+            for (int i = 0; i < seats.Count; i++)
+                foreach (Ticket ticket in spectacle.Tickets)
+                    if (seats[i] == ticket.Seat)
+                    {
+                        seats.RemoveAt(i);
+                        i--;
+                        break;
+                    }
+
             foreach (int seat in seats)
             {
                 comboBox_seats.Items.Add(Convert.ToString(seat));
