@@ -52,7 +52,7 @@ namespace Theater
             // Инициализируем таблицу
             initializeDataGridView();
             // Выводим данные на таблицу
-            showSectorsOnDataGridView();
+            showTicketsOnDataGridView();
             // Блокируем изменение секторов не выбрав конкретный
             lockEditAndRemoveSector();
 
@@ -66,6 +66,7 @@ namespace Theater
             Icon = icons.editRecord;
             ticketToolStripMenuItem.Image = icons.tickets.ToBitmap();
             addTicketToolStripMenuItem.Image = icons.addRecord.ToBitmap();
+            changeStatusToolStripMenuItem.Image = icons.editRecord.ToBitmap();
             removeTicketToolStripMenuItem.Image = icons.removeRecord.ToBitmap();
         }
 
@@ -75,6 +76,9 @@ namespace Theater
             dateTimePicker_perfomanceDate.Value = spectacle.PerformanceDate;
             textBox_name.Text = spectacle.Name;
             textBox_baseTicketPrice.Text = Convert.ToString(spectacle.BasePrice);
+
+            textBox_baseTicketPrice.Enabled = false;
+            comboBox_hall.Enabled = false;
 
             // Заполняем combBox
             fillComboBox();
@@ -96,14 +100,22 @@ namespace Theater
         }
 
         // Вывод данных на таблицу
-        private void showSectorsOnDataGridView()
+        private void showTicketsOnDataGridView()
         {
             dataGridView_tickets.Rows.Clear();
 
             foreach (Ticket ticket in spectacle.Tickets)
             {
+                string ticketType = "Не задано";
+                if (ticket.GetType() == new NormalTicket().GetType())
+                    ticketType = "Обычный";
+                else if (ticket.GetType() == new SaleTicket().GetType())
+                    ticketType = "Скидочный";
+                else if (ticket.GetType() == new VIPTicket().GetType())
+                    ticketType = "VIP";
+
                 string[] newRow = new string[] { Convert.ToString(ticket.Number),
-                                                 Convert.ToString(ticket.GetType().ToString()),
+                                                 ticketType,
                                                  Convert.ToString(ticket.Seat),
                                                  Convert.ToString(ticket.CalculatedPrice),
                                                  Convert.ToString(ticket.Reserved ? "Да" : "Нет") };
@@ -116,10 +128,12 @@ namespace Theater
         {
             if (dataGridView_tickets.CurrentRow != null)
             {
+                changeStatusToolStripMenuItem.Enabled = true;
                 removeTicketToolStripMenuItem.Enabled = true;
             }
             else
             {
+                changeStatusToolStripMenuItem.Enabled = false;
                 removeTicketToolStripMenuItem.Enabled = false;
             }
         }
@@ -186,7 +200,7 @@ namespace Theater
                 return false;
         }
 
-        // Проверка вводимой надбавки
+        // Проверка вводимой базовой цены
         private bool priceValidator(String rate)
         {
             double currentPrice;
@@ -241,9 +255,57 @@ namespace Theater
 
             // Устанавливаем данные для передачи
             ifNotLeft = true;
-            spectacle = new Spectacle(dateTimePicker_perfomanceDate.Value, textBox_name.Text, Convert.ToDouble(textBox_baseTicketPrice.Text), halls[comboBox_hall.SelectedIndex].Number);
+
+            if (halls[comboBox_hall.SelectedIndex].Number == spectacle.HallNumber)
+            {
+                spectacle.PerformanceDate = dateTimePicker_perfomanceDate.Value;
+                spectacle.Name = textBox_name.Text;
+                spectacle.BasePrice = Convert.ToDouble(textBox_baseTicketPrice.Text);
+                spectacle.HallNumber = halls[comboBox_hall.SelectedIndex].Number;
+            }
+            else
+            {
+                spectacle.PerformanceDate = dateTimePicker_perfomanceDate.Value;
+                spectacle.Name = textBox_name.Text;
+                spectacle.BasePrice = Convert.ToDouble(textBox_baseTicketPrice.Text);
+                spectacle.HallNumber = halls[comboBox_hall.SelectedIndex].Number;
+                spectacle.removeTickets();
+            }
 
             this.Close();
+        }
+
+        // Добавить билет
+        private void addTicketToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Открываем форму добавления нового билета
+            addTicket newForm = new addTicket(halls, spectacle);
+            newForm.ShowDialog(this);
+
+            // Возвращаем данные
+            if (newForm.IfNotLeft)
+                spectacle.addTicket(newForm.NewTicket);
+
+            showTicketsOnDataGridView();
+            lockEditAndRemoveSector();
+        }
+
+        // Изменить статус бронирования билета
+        private void changeStatusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            spectacle.changeTicketStatus(dataGridView_tickets.CurrentRow.Index);
+
+            showTicketsOnDataGridView();
+            lockEditAndRemoveSector();
+        }
+
+        // Удалить билет
+        private void removeTicketToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            spectacle.removeTicket(dataGridView_tickets.CurrentRow.Index);
+
+            showTicketsOnDataGridView();
+            lockEditAndRemoveSector();
         }
     }
 }

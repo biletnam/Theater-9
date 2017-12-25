@@ -183,6 +183,21 @@ namespace Theater
             return counter;
         }
 
+        // Получить все места в зале
+        public List<Int32> getSeats()
+        {
+            List<Int32> temp = new List<int>();
+
+            foreach (Sector sector in sectors)
+                for (int i = sector.StartSeat; i <= sector.EndSeat; i++)
+                    temp.Add(i);
+
+            // Сортируем их
+            temp.Sort();
+
+            return temp;
+        }
+
         /// Глубокое копирование
         public object Clone()
         {
@@ -353,6 +368,30 @@ namespace Theater
             }
         }
 
+        // Добавить билет
+        public void addTicket(Ticket newTicket)
+        {
+            tickets.Add(newTicket);
+        }
+
+        // Изменить статус резрвирования билета с индексом ticketIndex
+        public void changeTicketStatus(Int32 ticketIndex)
+        {
+            tickets[ticketIndex].changeStatus();
+        }
+
+        // Удалить билет с индексом ticketIndex
+        public void removeTicket(Int32 ticketIndex)
+        {
+            tickets.RemoveAt(ticketIndex);
+        }
+
+        // Удалить все билеты
+        public void removeTickets()
+        {
+            tickets.Clear();
+        }
+
         /// Глубокое копирование
         public object Clone()
         {
@@ -442,20 +481,28 @@ namespace Theater
         }
 
         // Сменить статус резервирования билета на противоположный
-        protected void changeStatus()
+        public void changeStatus()
         {
             reserved = !reserved;
         }
 
         // Подсчет стоимости билета в зависимости от типа
-        protected abstract void calculatePrice(Double basePrice, Double rate);
+        public abstract void calculatePrice(Double basePrice, Double rate);
     }
 
     /// Класс "Обычный билет"
     [Serializable]
     public class NormalTicket : Ticket
     {
-        protected override void calculatePrice(Double basePrice, Double rate)
+        /// Конструкторы
+        public NormalTicket() : base()
+        {
+        }
+        public NormalTicket(Int32 number, Int32 seat, Double calculatedPrice, Boolean reserved) : base(number, seat, calculatedPrice, reserved)
+        {
+        }
+
+        public override void calculatePrice(Double basePrice, Double rate)
         {
             calculatedPrice = basePrice * rate;
         }
@@ -466,6 +513,16 @@ namespace Theater
     public class SaleTicket : NormalTicket
     {
         private Double sale;                // Размер скидки
+
+        /// Конструкторы
+        public SaleTicket() : base()
+        {
+            sale = 0.0;
+        }
+        public SaleTicket(Int32 number, Int32 seat, Double sale, Double calculatedPrice, Boolean reserved) : base(number, seat, calculatedPrice, reserved)
+        {
+            this.sale = sale;
+        }
 
         /// Свойства для получения/установки значения поля
         public Double Sale
@@ -481,9 +538,11 @@ namespace Theater
         }
 
         // Подсчет стоимости билета в зависимости от типа
-        protected override void calculatePrice(Double basePrice, Double rate)
+        public override void calculatePrice(Double basePrice, Double rate)
         {
-            calculatedPrice = basePrice * rate * sale;
+            calculatedPrice = basePrice * rate - basePrice * rate * sale;
+            if (calculatedPrice < 0)
+                calculatedPrice = 0;
         }
     }
 
@@ -493,7 +552,19 @@ namespace Theater
     {
         private Double additionalCost;      // Дополнительная стоимоть доп. услуги по VIP билету
         private String additionalService;   // Содержание доп. услуги по VIP билету
-        
+
+        /// Конструкторы
+        public VIPTicket() : base()
+        {
+            additionalCost = 0.0;
+            additionalService = "Не задано";
+        }
+        public VIPTicket(Int32 number, Int32 seat, Double additionalCost, Double calculatedPrice, Boolean reserved, String additionalService) : base(number, seat, calculatedPrice, reserved)
+        {
+            this.additionalCost = additionalCost;
+            this.additionalService = additionalService;
+        }
+
         /// Свойства для получения/установки значения поля
         public Double AdditionalCost
         {
@@ -519,7 +590,7 @@ namespace Theater
         }
 
         // Подсчет стоимости билета в зависимости от типа
-        protected override void calculatePrice(Double basePrice, Double rate)
+        public override void calculatePrice(Double basePrice, Double rate)
         {
             calculatedPrice = basePrice * rate + additionalCost;
         }
