@@ -34,6 +34,8 @@
             this.addSpecToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editSpecToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeSpecToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.profitReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_spectacles)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +63,8 @@
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.spectacleToolStripMenuItem});
+            this.spectacleToolStripMenuItem,
+            this.reportToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(344, 24);
@@ -99,6 +102,21 @@
             this.removeSpecToolStripMenuItem.Text = "Удалить";
             this.removeSpecToolStripMenuItem.Click += new System.EventHandler(this.removeSpecToolStripMenuItem_Click);
             // 
+            // reportToolStripMenuItem
+            // 
+            this.reportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.profitReportToolStripMenuItem});
+            this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
+            this.reportToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.reportToolStripMenuItem.Text = "Отчет";
+            // 
+            // profitReportToolStripMenuItem
+            // 
+            this.profitReportToolStripMenuItem.Name = "profitReportToolStripMenuItem";
+            this.profitReportToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
+            this.profitReportToolStripMenuItem.Text = "Отчет о прибыли";
+            this.profitReportToolStripMenuItem.Click += new System.EventHandler(this.profitReportToolStripMenuItem_Click);
+            // 
             // selling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -126,5 +144,7 @@
         private System.Windows.Forms.ToolStripMenuItem addSpecToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editSpecToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeSpecToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem profitReportToolStripMenuItem;
     }
 }

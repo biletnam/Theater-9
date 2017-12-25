@@ -48,6 +48,8 @@ namespace Theater
             addSpecToolStripMenuItem.Image = icons.addRecord.ToBitmap();
             editSpecToolStripMenuItem.Image = icons.editRecord.ToBitmap();
             removeSpecToolStripMenuItem.Image = icons.removeRecord.ToBitmap();
+            reportToolStripMenuItem.Image = icons.report.ToBitmap();
+            profitReportToolStripMenuItem.Image = icons.profitReport.ToBitmap();
         }
 
         // Инициализация таблицы
@@ -203,7 +205,7 @@ namespace Theater
 
         private void addSpecToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Открываем форму добавления зала
+            // Открываем форму добавления спектакля
             addSpectacle newForm = new addSpectacle(halls, spectacles);
             newForm.ShowDialog(this);
 
@@ -234,6 +236,13 @@ namespace Theater
             spectacles.RemoveAt(dataGridView_spectacles.CurrentRow.Index);
             showHallsOnDataGridView();
             lockEditAndRemoveHall();
+        }
+
+        private void profitReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Открываем форму для создания отчета
+            profitReport newForm = new profitReport(spectacles);
+            newForm.ShowDialog(this);
         }
     }
 }

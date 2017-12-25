@@ -45,6 +45,10 @@ namespace Theater
             // Устанавливаем иконку формы
             Icon = icons.addRecord;
 
+            //
+            /*dateTimePicker_perfomanceDate.Format = DateTimePickerFormat.Custom;
+            dateTimePicker_perfomanceDate.CustomFormat = "MM/dd/yyyy hh:mm:ss";*/
+
             // Устанавливаем данные
             this.halls = halls;
             this.spectacles = spectacles;

@@ -47,6 +47,9 @@ namespace Theater
 
             // Устанавливаем иконки
             setIcons();
+            //
+            /*dateTimePicker_perfomanceDate.Format = DateTimePickerFormat.Custom;
+            dateTimePicker_perfomanceDate.CustomFormat = "MM/dd/yyyy hh:mm:ss";*/
             // Выводим номер и название зала
             showSector();
             // Инициализируем таблицу

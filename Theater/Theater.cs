@@ -392,6 +392,17 @@ namespace Theater
             tickets.Clear();
         }
 
+        // Получить прибыль с билетов
+        public Double getProfit()
+        {
+            Double profit = 0.0;
+
+            foreach (Ticket ticket in tickets)
+                profit += ticket.CalculatedPrice;
+
+            return profit;
+        }
+
         /// Глубокое копирование
         public object Clone()
         {
