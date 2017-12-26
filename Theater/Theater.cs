@@ -10,7 +10,7 @@ namespace Theater
     [Serializable]
     public class Hall : ICloneable
     {
-        public Int32 number;            // Идетификатор зала
+        private Int32 number;            // Идетификатор зала
         private String name;            // Название зала
         private List<Sector> sectors;   // Список секторов входящих в этот зал
 
