@@ -103,9 +103,11 @@ namespace Theater
                 comboBox_seats.Items.Add(Convert.ToString(seat));
             }
 
+            // Если нет свободных мест, то отключаем возможность дабавления нового билета
             if (seats.Count == 0)
             {
                 comboBox_seats.Enabled = false;
+                button_getPrice.Enabled = false;
                 button_add.Enabled = false;
             }
             else
